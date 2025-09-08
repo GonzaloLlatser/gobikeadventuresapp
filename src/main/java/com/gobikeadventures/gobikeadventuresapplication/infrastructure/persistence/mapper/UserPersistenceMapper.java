@@ -5,10 +5,11 @@ import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persisten
 import org.mapstruct.Mapper;
 
 
+
 @Mapper(componentModel = "spring")
 public interface UserPersistenceMapper {
 
   UserEntity toEntity(User user);
 
-  User toUser(UserEntity userEntity);
+  User toDomain(UserEntity userEntity);
 }

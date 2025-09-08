@@ -21,6 +21,6 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
   @Override
   public User save(User user) {
     UserEntity userEntity = userPersistenceMapper.toEntity(user);
-    return userPersistenceMapper.toUser(springUserRepository.save(userEntity));
+    return userPersistenceMapper.toDomain(springUserRepository.save(userEntity));
   }
 }

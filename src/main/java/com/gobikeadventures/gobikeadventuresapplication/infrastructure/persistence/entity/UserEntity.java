@@ -1,11 +1,13 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+@Data
 public class UserEntity {
 
   @Id
@@ -18,5 +20,4 @@ public class UserEntity {
 
   @Column(name = "user_email")
   private String email;
-
 }
