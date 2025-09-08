@@ -1,7 +1,7 @@
 package com.gobikeadventures.gobikeadventuresapplication.domain.port.in;
 
-import com.gobikeadventures.gobikeadventuresapplication.domain.model.User;
+import com.gobikeadventures.gobikeadventuresapplication.domain.model.UserDO;
 
 public interface UserServicePort {
-  User add(User user);
+  UserDO add(UserDO user);
 }

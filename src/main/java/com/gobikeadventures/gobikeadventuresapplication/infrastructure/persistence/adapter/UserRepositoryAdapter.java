@@ -1,5 +1,6 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.adapter;
 
+import com.gobikeadventures.gobikeadventuresapplication.domain.model.UserDO;
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.UserRepositoryPort;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity.User;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.mapper.UserPersistenceMapper;
@@ -18,7 +19,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
   }
 
   @Override
-  public com.gobikeadventures.gobikeadventuresapplication.domain.model.User save(com.gobikeadventures.gobikeadventuresapplication.domain.model.User user) {
+  public UserDO save(UserDO user) {
     User userEntity = userPersistenceMapper.toEntity(user);
     return userPersistenceMapper.toDomain(springUserRepository.save(userEntity));
   }

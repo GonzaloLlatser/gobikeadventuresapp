@@ -1,7 +1,7 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.mapper.user;
 
 
-import com.gobikeadventures.gobikeadventuresapplication.domain.model.User;
+import com.gobikeadventures.gobikeadventuresapplication.domain.model.UserDO;
 import com.gobikeadventures.gobikeadventuresapplication.dto.user.UserCreateDTO;
 import org.mapstruct.Mapper;
 
@@ -9,8 +9,8 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
 
   // DTO -> Domain Model
-  User toModel(UserCreateDTO dto);
+  UserDO toModel(UserCreateDTO dto);
 
   // Domain Model -> DTO
-  UserCreateDTO toDTO(User user);
+  UserCreateDTO toDTO(UserDO user);
 }

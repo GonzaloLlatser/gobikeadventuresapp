@@ -1,6 +1,6 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.web.user;
 
-import com.gobikeadventures.gobikeadventuresapplication.domain.model.User;
+import com.gobikeadventures.gobikeadventuresapplication.domain.model.UserDO;
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.in.UserServicePort;
 import com.gobikeadventures.gobikeadventuresapplication.dto.user.UserCreateDTO;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.mapper.user.UserMapper;
@@ -26,7 +26,7 @@ public class UserController {
   @PostMapping
   public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userDTO) {
 
-    User user = userMapper.toModel(userDTO);
+    UserDO user = userMapper.toModel(userDTO);
     UserCreateDTO userCreateDTO = userMapper.toDTO(userServicePort.add(user));
     return ResponseEntity.status(HttpStatus.CREATED).body(userCreateDTO);
   }
