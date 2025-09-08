@@ -8,16 +8,20 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 @Data
-public class UserEntity {
+public class User {
 
   @Id
   @GeneratedValue
-  @Column(name = "user_id")
+  @Column(columnDefinition = "UUID")
   private UUID id;
 
-  @Column(name = "user_password")
+  @Column(nullable = false, unique = true)
+  private String email;
+
+  @Column(nullable = false)
   private String password;
 
-  @Column(name = "user_email")
-  private String email;
+  @ManyToOne
+  @JoinColumn(name = "role_id", nullable = false)
+  private Role role;
 }
