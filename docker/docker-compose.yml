@@ -1,0 +1,22 @@
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: gobike-postgres
+    environment:
+      POSTGRES_DB: gobikeadapp
+      POSTGRES_USER: gobike
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - gobike-network
+
+volumes:
+  postgres-data:
+
+networks:
+  gobike-network:
+
