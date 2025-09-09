@@ -2,7 +2,8 @@ package com.gobikeadventures.gobikeadventuresapplication.infrastructure.web.user
 
 import com.gobikeadventures.gobikeadventuresapplication.domain.model.UserDO;
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.in.UserServicePort;
-import com.gobikeadventures.gobikeadventuresapplication.dto.user.UserCreateDTO;
+import com.gobikeadventures.gobikeadventuresapplication.dto.user.UserRequestDTO;
+import com.gobikeadventures.gobikeadventuresapplication.dto.user.UserResponseDTO;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.mapper.user.UserMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users/new")
+@RequestMapping("/users")
 public class UserController {
 
   private final UserServicePort userServicePort;
@@ -22,12 +23,12 @@ public class UserController {
     this.userServicePort = userServicePort;
     this.userMapper = userMapper;
   }
-
   @PostMapping
-  public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userDTO) {
+  public ResponseEntity<?> createUser(@RequestBody UserRequestDTO userRequestDTO) {
 
-    UserDO user = userMapper.toModel(userDTO);
-    UserCreateDTO userCreateDTO = userMapper.toDTO(userServicePort.add(user));
-    return ResponseEntity.status(HttpStatus.CREATED).body(userCreateDTO);
+      UserDO user = userMapper.toModel(userRequestDTO);
+      Long roleId = userRequestDTO.getRol();
+      UserResponseDTO userResponseDTO = userMapper.toDTO(userServicePort.add(user, roleId));
+      return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDTO);
   }
 }

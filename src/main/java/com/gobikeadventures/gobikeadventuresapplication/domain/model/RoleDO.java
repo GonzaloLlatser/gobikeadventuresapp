@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RoleDO {
-  private String id;
+  private Long id;
   private String name;
-  private String permission_description;
+  private String permissionDescription;
 }
