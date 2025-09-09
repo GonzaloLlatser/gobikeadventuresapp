@@ -1,11 +1,17 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "experience")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Experience {
 
   @Id
@@ -19,7 +25,4 @@ public class Experience {
   @ManyToOne
   @JoinColumn(name = "bike_id")
   private Bike bike;
-
-  @Column(nullable = false)
-  private java.time.LocalDateTime scheduledDate;
 }

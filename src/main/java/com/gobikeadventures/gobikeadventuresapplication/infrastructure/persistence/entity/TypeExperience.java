@@ -1,16 +1,22 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "type_experience")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TypeExperience {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)

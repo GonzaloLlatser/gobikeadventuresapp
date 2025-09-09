@@ -1,11 +1,17 @@
 package com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "personal_data")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonalData {
 
   @Id
