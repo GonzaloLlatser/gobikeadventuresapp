@@ -4,10 +4,12 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.model.AuthDO;
 import com.gobikeadventures.gobikeadventuresapplication.dto.auth.AuthRequestDTO;
 import com.gobikeadventures.gobikeadventuresapplication.dto.auth.AuthResponseDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface AuthMapper {
 
+  @Mapping(target = "token", source = "token")
   AuthResponseDTO toDTO(AuthDO authDO);
 
   AuthDO toModel(AuthRequestDTO authRequestDTO);
