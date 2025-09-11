@@ -4,11 +4,12 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.model.RoleDO;
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.RoleRepositoryPort;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.mapper.RolePersistenceMapper;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.repository.SpringRoleRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Repository
 public class RolRepositoryAdapter implements RoleRepositoryPort {
 
   private final SpringRoleRepository springRoleRepository;

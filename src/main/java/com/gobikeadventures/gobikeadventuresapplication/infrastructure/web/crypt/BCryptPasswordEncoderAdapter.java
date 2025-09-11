@@ -1,4 +1,4 @@
-package com.gobikeadventures.gobikeadventuresapplication.infrastructure.web.user;
+package com.gobikeadventures.gobikeadventuresapplication.infrastructure.web.crypt;
 
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.in.PasswordEncoderPort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

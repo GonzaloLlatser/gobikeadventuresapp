@@ -5,9 +5,9 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.UserRepo
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.entity.User;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.mapper.UserPersistenceMapper;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.repository.SpringUserRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class UserRepositoryAdapter implements UserRepositoryPort {
 
   private final SpringUserRepository springUserRepository;

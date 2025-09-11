@@ -23,6 +23,7 @@ public class UserController {
     this.userServicePort = userServicePort;
     this.userMapper = userMapper;
   }
+
   @PostMapping
   public ResponseEntity<?> createUser(@RequestBody UserRequestDTO userRequestDTO) {
 
