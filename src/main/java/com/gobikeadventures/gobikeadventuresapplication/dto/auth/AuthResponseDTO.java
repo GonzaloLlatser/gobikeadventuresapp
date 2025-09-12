@@ -1,6 +1,6 @@
 package com.gobikeadventures.gobikeadventuresapplication.dto.auth;
 
-import lombok.AllArgsConstructor;
+import com.gobikeadventures.gobikeadventuresapplication.dto.user.RoleResponseDTO;
 import lombok.Data;
 
 import java.util.UUID;
@@ -10,4 +10,5 @@ public class AuthResponseDTO {
   private UUID id;
   private String email;
   private String token;
+  private RoleResponseDTO role;
 }

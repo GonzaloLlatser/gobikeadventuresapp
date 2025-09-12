@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 public interface AuthMapper {
 
   @Mapping(target = "token", source = "token")
+  @Mapping(target = "role", source ="roleDO" )
   AuthResponseDTO toDTO(AuthDO authDO);
 
   AuthDO toModel(AuthRequestDTO authRequestDTO);

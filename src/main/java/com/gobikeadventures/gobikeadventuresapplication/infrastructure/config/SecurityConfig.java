@@ -36,11 +36,17 @@ public class SecurityConfig {
       .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
       .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/auth/**").permitAll()          // login público
-        .requestMatchers("/users").hasRole("ADMIN")       // listar usuarios solo ADMIN
-        .requestMatchers("/users/{id}").authenticated()  // ver usuario autenticado
-        .requestMatchers("/roles/**").hasRole("ADMIN")   // roles solo ADMIN
+        .requestMatchers("/auth/**").permitAll()          // public login
+        .requestMatchers("/users/{id}").authenticated()  // only authenticated user
         .requestMatchers(HttpMethod.POST, "/users").permitAll()
+        .requestMatchers("/users").hasRole("ADMIN")
+
+
+
+
+
+          // listar usuarios solo ADMIN
+        .requestMatchers("/roles/**").hasRole("ADMIN")   // roles solo ADMIN
         .anyRequest().authenticated()                     // cualquier otro endpoint protegido
       )
       .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

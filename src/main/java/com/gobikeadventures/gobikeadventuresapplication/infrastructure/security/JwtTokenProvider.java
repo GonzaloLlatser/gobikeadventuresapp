@@ -22,11 +22,11 @@ public class JwtTokenProvider {
     this.validityInMs = validityInMs;
   }
 
-  public String generateToken(String userId, String email) {
+  public String generateToken(String userId, String email, String role) {
     Date now = new Date();
     Date expiry = new Date(now.getTime() + validityInMs);
 
-    return Jwts.builder().setSubject(userId).claim("email", email).setIssuedAt(now).setExpiration(expiry).signWith(key, SignatureAlgorithm.HS256).compact();
+    return Jwts.builder().setSubject(userId).claim("email", email).claim("role", role).setIssuedAt(now).setExpiration(expiry).signWith(key, SignatureAlgorithm.HS256).compact();
   }
 
   public boolean validateToken(String token) {

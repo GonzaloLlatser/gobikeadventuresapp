@@ -14,6 +14,7 @@ public class AuthDO {
   private UUID id;
   private String email;
   private String password;
+  private RoleDO roleDO;
 
   public AuthDO(String token, UUID id, String email) {
   }

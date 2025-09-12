@@ -8,6 +8,9 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.RoleRepo
 import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.UserRepositoryPort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class UserService implements UserServicePort {
 
@@ -32,5 +35,15 @@ public class UserService implements UserServicePort {
     user.setRol(role);
 
     return userRepositoryPort.save(user);
+  }
+
+  @Override
+  public UserDO getUserById(UUID id) {
+    return userRepositoryPort.getUserById(id);
+  }
+
+  @Override
+  public List<UserDO> getAll() {
+    return userRepositoryPort.getAll();
   }
 }

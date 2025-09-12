@@ -6,5 +6,5 @@ import lombok.Data;
 public class RoleResponseDTO {
   private Long id;
   private String name;
-  private String permission;
+  private String permissionDescription;
 }

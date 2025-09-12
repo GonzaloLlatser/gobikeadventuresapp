@@ -30,10 +30,9 @@ public class AuthService implements AuthServicePort {
       throw new RuntimeException("Invalid credentials");
     }
 
-    String token = jwtTokenProvider.generateToken(user.getId().toString(), user.getEmail());
+    String token = jwtTokenProvider.generateToken(user.getId().toString(), user.getEmail(), user.getRoleDO().getName());
 
     user.setToken(token);
-
 
     return user;
   }

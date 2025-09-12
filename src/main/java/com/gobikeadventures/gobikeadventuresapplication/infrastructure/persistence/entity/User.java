@@ -27,7 +27,7 @@ public class User {
   @Column(nullable = false)
   private String password;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false) // optional = false porque no puede ser null
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "role_id")
   private Role rol;
 }
