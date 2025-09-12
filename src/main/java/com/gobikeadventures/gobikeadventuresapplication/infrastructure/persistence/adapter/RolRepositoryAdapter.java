@@ -5,8 +5,8 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.RoleRepo
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.mapper.RolePersistenceMapper;
 import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persistence.repository.SpringRoleRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -24,5 +24,10 @@ public class RolRepositoryAdapter implements RoleRepositoryPort {
   public Optional<RoleDO> findById(String id) {
     return springRoleRepository.findById(Long.valueOf(id))
       .map(rolePersistenceMapper::toDomain);
+  }
+
+  @Override
+  public List<RoleDO> getAll() {
+    return springRoleRepository.findAll().stream().map(rolePersistenceMapper::toDomain).toList();
   }
 }

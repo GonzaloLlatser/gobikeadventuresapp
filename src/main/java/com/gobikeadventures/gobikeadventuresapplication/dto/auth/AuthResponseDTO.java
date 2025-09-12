@@ -1,6 +1,6 @@
 package com.gobikeadventures.gobikeadventuresapplication.dto.auth;
 
-import com.gobikeadventures.gobikeadventuresapplication.dto.user.RoleResponseDTO;
+import com.gobikeadventures.gobikeadventuresapplication.dto.role.RoleResponseDTO;
 import lombok.Data;
 
 import java.util.UUID;

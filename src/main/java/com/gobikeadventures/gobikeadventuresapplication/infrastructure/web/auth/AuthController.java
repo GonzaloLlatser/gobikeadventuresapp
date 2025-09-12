@@ -23,10 +23,28 @@ public class AuthController {
     this.authMapper = authMapper;
   }
 
+  /**
+   * POST /auth/login
+   *
+   * Authenticates a user with provided credentials.
+   * Accepts an AuthRequestDTO containing email and password.
+   * Converts the DTO to a domain object, delegates login logic to AuthServicePort,
+   * then maps the resulting domain object to an AuthResponseDTO.
+   *
+   * Returns HTTP 200 with JWT token and user info on success.
+   *
+   * @param authRequestDTO DTO containing login credentials
+   * @return ResponseEntity with AuthResponseDTO containing token and user details
+   */
   @PostMapping("/login")
   public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthRequestDTO authRequestDTO) {
+    // Map request DTO to domain object
     AuthDO authDO = authMapper.toModel(authRequestDTO);
+
+    // Delegate login logic to service and map result back to response DTO
     AuthResponseDTO authResponseDTO = authMapper.toDTO(authServicePort.login(authDO));
+
+    // Return HTTP 200 OK with authentication info
     return ResponseEntity.ok(authResponseDTO);
   }
 }

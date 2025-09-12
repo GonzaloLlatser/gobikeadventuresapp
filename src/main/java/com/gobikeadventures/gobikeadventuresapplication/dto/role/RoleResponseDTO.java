@@ -1,4 +1,4 @@
-package com.gobikeadventures.gobikeadventuresapplication.dto.user;
+package com.gobikeadventures.gobikeadventuresapplication.dto.role;
 
 import lombok.Data;
 
