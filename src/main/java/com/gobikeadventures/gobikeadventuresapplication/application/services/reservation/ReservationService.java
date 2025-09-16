@@ -27,4 +27,9 @@ public class ReservationService implements ReservationServicePort {
 
     return reservationRepositoryPort.save(reservationDO);
   }
+
+  @Override
+  public ReservationDO findById(String reservationId) {
+    return reservationRepositoryPort.findById(reservationId);
+  }
 }

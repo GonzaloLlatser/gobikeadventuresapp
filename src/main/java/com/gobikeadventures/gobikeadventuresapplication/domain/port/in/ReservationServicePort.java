@@ -5,4 +5,6 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.model.Reservation
 public interface ReservationServicePort {
 
   ReservationDO add(ReservationDO reservationDO);
+
+  ReservationDO findById(String reservationId);
 }

@@ -25,4 +25,12 @@ public class ReservationRepositoryAdapter implements ReservationRepositoryPort {
 
     return reservationPersistenceMapper.toDomain(springReservationRepository.save(reservation));
   }
+
+  @Override
+  public ReservationDO findById(String reservationId) {
+    var entity = springReservationRepository.findById(Long.valueOf(reservationId))
+      .orElseThrow(() -> new RuntimeException("Reservation not found: " + reservationId));
+
+    return reservationPersistenceMapper.toDomain(entity);
+  }
 }

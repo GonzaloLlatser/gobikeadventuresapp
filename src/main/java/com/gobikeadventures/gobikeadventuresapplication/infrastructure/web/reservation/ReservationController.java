@@ -9,10 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +25,20 @@ public class ReservationController {
     this.reservationMapper = reservationMapper;
   }
 
+  /**
+   * Creates a new reservation for the authenticated user.
+   *
+   * <p>This endpoint expects a {@link ReservationRequestDTO} in the request body.
+   * The user ID contained in the request must match the user ID from the JWT authentication token.
+   * Otherwise, the request will be rejected with a {@code 403 FORBIDDEN}.</p>
+   *
+   * @param reservationRequestDTO the reservation details sent by the client
+   * @return {@link ResponseEntity} with:
+   *         <ul>
+   *           <li>{@code 201 CREATED} and the created reservation if successful</li>
+   *           <li>{@code 403 FORBIDDEN} if the user tries to create a reservation for another user</li>
+   *         </ul>
+   */
   @PostMapping
   public ResponseEntity<?> createReservation(@RequestBody ReservationRequestDTO reservationRequestDTO) {
 
@@ -45,5 +56,25 @@ public class ReservationController {
     ReservationDO created = reservationServicePort.add(reservationDO);
 
     return ResponseEntity.status(HttpStatus.CREATED).body(reservationMapper.toDTO(created));
+  }
+
+  /**
+   * Retrieves an existing reservation by its ID.
+   *
+   * <p>If the reservation exists, it is returned as a DTO. If it does not exist,
+   * the service layer should throw an exception that is handled by the global {@code @ControllerAdvice}.</p>
+   *
+   * @param reservationId the ID of the reservation to retrieve
+   * @return {@link ResponseEntity} with:
+   *         <ul>
+   *           <li>{@code 200 OK} and the reservation data if found</li>
+   *           <li>{@code 404 NOT FOUND} if the reservation does not exist</li>
+   *         </ul>
+   */
+  @GetMapping("/{reservationId}")
+  public ResponseEntity<?> getReservation(@PathVariable String reservationId) {
+    ReservationDO reservationDO = reservationServicePort.findById(reservationId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(reservationMapper.toDTO(reservationDO));
   }
 }
