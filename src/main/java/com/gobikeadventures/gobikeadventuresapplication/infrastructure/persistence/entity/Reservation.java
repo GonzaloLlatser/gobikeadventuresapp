@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "reservation")
 @Data
@@ -18,11 +20,14 @@ public class Reservation {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "reservation_date")
+  private LocalDateTime reservationDate;
+
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
-  @ManyToOne
+  @ManyToOne (cascade = CascadeType.ALL)
   @JoinColumn(name = "payment_id")
   private Payment payment;
 

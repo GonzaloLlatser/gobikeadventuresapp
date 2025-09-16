@@ -9,7 +9,6 @@ import com.gobikeadventures.gobikeadventuresapplication.domain.port.out.UserRepo
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UserService implements UserServicePort {
@@ -38,7 +37,7 @@ public class UserService implements UserServicePort {
   }
 
   @Override
-  public UserDO getUserById(UUID id) {
+  public UserDO getUserById(Long id) {
     return userRepositoryPort.getUserById(id);
   }
 

@@ -8,7 +8,6 @@ import com.gobikeadventures.gobikeadventuresapplication.infrastructure.persisten
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -26,14 +25,15 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
   @Override
   public UserDO save(UserDO user) {
     User userEntity = userPersistenceMapper.toEntity(user);
+
     return userPersistenceMapper.toDomain(springUserRepository.save(userEntity));
   }
 
   @Override
-  public UserDO getUserById(UUID uuid) {
-    return springUserRepository.findById(uuid)
+  public UserDO getUserById(Long id) {
+    return springUserRepository.findById(id)
       .map(userPersistenceMapper::toDomain)
-      .orElseThrow(() -> new RuntimeException("User not found with id: " + uuid));
+      .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
   }
 
   @Override

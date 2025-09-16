@@ -3,12 +3,13 @@ package com.gobikeadventures.gobikeadventuresapplication.domain.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class UserDO {
+public class PaymentDO {
   private Long id;
-  private String password;
-  private String email;
-  private RoleDO rol;
+  private LocalDateTime date;
+  private String status;
+  private String transactionId;
 }

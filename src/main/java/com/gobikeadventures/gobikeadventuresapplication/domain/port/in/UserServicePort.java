@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface UserServicePort {
   UserDO add(UserDO user, Long roleId);
 
-  UserDO getUserById(UUID id);
+  UserDO getUserById(Long id);
 
   List<UserDO> getAll();
 }

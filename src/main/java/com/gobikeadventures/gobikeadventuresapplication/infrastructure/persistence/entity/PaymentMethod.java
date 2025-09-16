@@ -17,7 +17,6 @@ public class PaymentMethod {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  private String name;   // ej: card, paypal, cash
+  private String name;
   private String provider;
 }

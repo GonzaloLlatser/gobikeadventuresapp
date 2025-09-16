@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -59,7 +58,7 @@ public class UserController {
    * @return ResponseEntity containing the user data or an error message
    */
   @GetMapping("/{id}")
-  public ResponseEntity<?> getUserById(@PathVariable UUID id) {
+  public ResponseEntity<?> getUserById(@PathVariable Long id) {
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String userIdFromToken = authentication.getName(); // principal = userId (String)
